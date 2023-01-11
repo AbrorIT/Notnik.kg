@@ -14,8 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+from apps.products.views import ProductAPIView, ProductCreateAPIView, ProductUpdateAPIView
+from apps.categories.views import CategoryAPIView,CategoryCreateAPIView, CategoryUpdateAPIView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+
+    #продукт api
+    path('api/products', ProductAPIView.as_view(), name="product_api"),
+    path('api/product/create', ProductCreateAPIView.as_view(), name = "post_create_api"),
+    path('api/product/update/<int:pk>', ProductUpdateAPIView.as_view(), name = "post_api_update"),
+
+    #категории api
+    path('api/categories',CategoryAPIView.as_view(),name = "category_api"),
+    path('api/category/create',CategoryCreateAPIView.as_view(),name = "category_create_api"),
+    path('api/category/update/<int:pk>',CategoryUpdateAPIView.as_view(),name = "category_api_update"),
 ]

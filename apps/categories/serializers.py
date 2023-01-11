@@ -4,7 +4,7 @@ from apps.products.serializers import PoductSerializer
 # from apps.products.serializers import Productserializer
 
 
-class CategorySerialoxers(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     category = PoductSerializer(read_only = True, many = True)
     class Meta:
         model  = Category
