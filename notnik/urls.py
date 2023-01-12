@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from apps.products.views import ProductAPIView, ProductCreateAPIView, ProductUpdateAPIView
+from apps.products.views import ProductAPIView, ProductCreateAPIView, ProductUpdateAPIView, ProductDeleteAPIView
 from apps.categories.views import CategoryAPIView,CategoryCreateAPIView, CategoryUpdateAPIView, CategoryDeleteAPIView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/product', ProductAPIView.as_view(), name="product_api"),
     path('api/product/create', ProductCreateAPIView.as_view(), name = "post_create_api"),
     path('api/product/update/<int:pk>', ProductUpdateAPIView.as_view(), name = "post_api_update"),
+    path('api/product/delete/<int:pk>',ProductDeleteAPIView.as_view(),name = "product_api_delete"),
 
     #категории api
     path('api/categories',CategoryAPIView.as_view(),name = "category_api"),
