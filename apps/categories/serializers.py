@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from apps.categories.models import Category
-from apps.products.serializers import PoductSerializer
+from apps.products.serializers import ProductSerializer
 # from apps.products.serializers import Productserializer
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    category = PoductSerializer(read_only = True, many = True)
+    category = ProductSerializer(read_only = True, many = True)
     class Meta:
         model  = Category
         fields = "__all__"
