@@ -26,12 +26,12 @@ urlpatterns = [
 
     #продукт api
     path('api/product', ProductAPIView.as_view(), name="product_api"),
-    path('api/product/create', ProductCreateAPIView.as_view(), name = "post_create_api"),
-    path('api/product/update/<int:pk>', ProductUpdateAPIView.as_view(), name = "post_api_update"),
+    path('api/product/create', ProductCreateAPIView.as_view(), name = "product_create_api"),
+    path('api/product/update/<int:pk>', ProductUpdateAPIView.as_view(), name = "product_api_update"),
     path('api/product/delete/<int:pk>',ProductDeleteAPIView.as_view(),name = "product_api_delete"),
 
     #категории api
-    path('api/categories',CategoryAPIView.as_view(),name = "category_api"),
+    path('api/category',CategoryAPIView.as_view(),name = "category_api"),
     path('api/category/create',CategoryCreateAPIView.as_view(),name = "category_create_api"),
     path('api/category/update/<int:pk>',CategoryUpdateAPIView.as_view(),name = "category_api_update"),
     path('api/category/delete/<int:pk>',CategoryDeleteAPIView.as_view(),name = "category_api_delete"),
