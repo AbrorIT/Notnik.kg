@@ -7,7 +7,6 @@ from apps.categories.models import Category
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
-    key = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name="product")
     descriptoin = models.TextField()
     image = models.ImageField(upload_to= 'product_image/')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name="category")
@@ -53,3 +52,10 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = "Картинка продукта"
         verbose_name_plural = "Картинки продуктов"
+
+class ProductKey(models.Model):
+    key = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_key", null=True)
+
+    class Meta:
+        verbose_name = "Ключ"
+        verbose_name_plural = "Ключи"
