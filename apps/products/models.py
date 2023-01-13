@@ -1,11 +1,13 @@
 from django.db import models
 from apps.categories.models import Category
 
+
 # Create your models here.
 
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
+    key = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name="product")
     descriptoin = models.TextField()
     image = models.ImageField(upload_to= 'product_image/')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name="category")
