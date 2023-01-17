@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from apps.products.views import ProductAPIView, ProductCreateAPIView, ProductUpdateAPIView, ProductDeleteAPIView
 from apps.categories.views import CategoryAPIView,CategoryCreateAPIView, CategoryUpdateAPIView, CategoryDeleteAPIView
+from apps.users.views import UserAPIView, UserCreateAPIView, UserUpdateAPIView,UserDeleteAPIView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -35,5 +36,11 @@ urlpatterns = [
     path('api/category/create',CategoryCreateAPIView.as_view(),name = "category_create_api"),
     path('api/category/update/<int:pk>',CategoryUpdateAPIView.as_view(),name = "category_api_update"),
     path('api/category/delete/<int:pk>',CategoryDeleteAPIView.as_view(),name = "category_api_delete"),
+
+      #users api
+    path('api/users', UserAPIView.as_view(), name = "users_api"),
+    path('api/users/create', UserCreateAPIView.as_view(), name = "users_create_api"),
+    path('api/users/update/<int:pk>', UserUpdateAPIView.as_view(), name = "users_update_api"),
+    path('api/users/delete/<int:pk>', UserDeleteAPIView.as_view(), name = "users_delete_api"),
 ]
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
