@@ -3,6 +3,7 @@ from rest_framework import generics
 from apps.users.serializers import UserSerializers, UserCreateSerializers, UserUpdateSerializers
 from apps.users.models import User
 
+
 # Create your views here.
 
 
@@ -21,4 +22,5 @@ class UserUpdateAPIView(generics.UpdateAPIView):
 class UserDeleteAPIView(generics.DestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializers
+
 
