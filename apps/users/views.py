@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions
 from apps.users.serializers import UserSerializers, UserCreateSerializers, UserUpdateSerializers
 from apps.users.models import User
 
@@ -10,6 +10,7 @@ from apps.users.models import User
 class UserAPIView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializers
+    permission_classes = [permissions.IsAuthenticated]
 
 class UserCreateAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
